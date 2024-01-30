@@ -54,13 +54,23 @@ boutonTrier.addEventListener("click", function () {
 
 const boutonFiltrer = document.querySelector(".btn-filtrer");
 
-boutonFiltrer.addEventListener("click", function () {
+//recup des elements HTML de l'input
+const inputPrixMax = document.getElementById('prix_max');
+const afficherPrixMax = document.getElementById('afficherPrix')
+//init valeur max
+afficherPrixMax.innerHTML = `${inputPrixMax.value} €`
+
+//fonction qui gère l'affichage des pièces en fonction du prix max choisi par l'utilisateur
+inputPrixMax.addEventListener('change', function () {
     const piecesFiltrees = pieces.filter(function (piece) {
-        return piece.prix <= 35;
+    return piece.prix <= inputPrixMax.value;
     });
+    afficherPrixMax.innerHTML = `${inputPrixMax.value} €`
     document.querySelector(".fiches").innerHTML = "";
     genererPieces(piecesFiltrees);
 });
+    
+
 
 //Correction Exercice
 const boutonDecroissant = document.querySelector(".btn-decroissant");
