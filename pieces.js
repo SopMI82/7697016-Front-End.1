@@ -33,6 +33,24 @@ for (let i = 0; i < pieces.length; i++) {
     //Ajout des éléments au DOM pour l'exercice
     pieceElement.appendChild(descriptionElement);
     pieceElement.appendChild(stockElement);
-
  }
  
+ const btnTrier = document.querySelector(".btn-trier");
+
+ btnTrier.addEventListener("click", () => {
+    const piecesOrdonnees = Array.from(pieces);
+    pieces.sort((a,b)=> {
+        return a.prix - b.prix;
+    })
+    console.log(pieces);
+ });
+
+const btnFiltrer = document.querySelector(".btn-filtrer");
+
+btnFiltrer.addEventListener("click", () => {
+    console.log("bouton cliqué");
+    const piecesFiltrees = pieces.filter(function(piece) {
+        return piece.prix <= 35;
+    })
+    console.log(piecesFiltrees);
+});
